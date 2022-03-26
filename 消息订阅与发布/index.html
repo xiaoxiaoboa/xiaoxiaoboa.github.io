@@ -9,7 +9,7 @@
     
     <title>
         
-            网络请求的返回结果 |
+            消息订阅与发布 |
         
         XIAOBO&#39;s Blog
     </title>
@@ -140,7 +140,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">网络请求的返回结果</span>
+            <span class="title-hover-animation">消息订阅与发布</span>
         </div>
 
         
@@ -157,8 +157,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-03-26 15:49:51</span>
-        <span class="mobile">2022-03-26 15:49</span>
+        <span class="pc">2022-03-26 18:50:23</span>
+        <span class="mobile">2022-03-26 18:50</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -170,7 +170,7 @@
                     </li>
                 
                     <li>
-                        &gt; <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/axios/">axios</a>&nbsp;
+                        &gt; <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/React/">React</a>&nbsp;
                     </li>
                 
             </ul>
@@ -190,41 +190,29 @@
         
 
         <div class="article-content markdown-body">
-            <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">&#x27;axios&#x27;</span>)</span><br><span class="line"></span><br><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;http://localhost:8000/posts&#x27;</span>).<span class="title function_">then</span>(</span><br><span class="line">  <span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error.<span class="property">message</span>)</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+            <p>之前跟着<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wy4y1D7JT?spm_id_from=333.999.0.0" >教程<i class="fas fa-external-link-alt"></i></a>做的小案例，在组件间通信时很麻烦：</p>
+<ol>
+<li>父组件和子组件通信：使用Props</li>
+<li>子组件和父组件通信：使用父组件传来的函数</li>
+<li>兄弟组件通信：必须把state放在父组件内，把父组件作为桥梁实现和兄弟组件的通信</li>
+</ol>
+<p>以前兄弟组件通信很麻烦，今天学习了新的通信方式：</p>
+<p>消息订阅与发布 ➡️ <a class="link"   target="_blank" rel="noopener" href="https://github.com/mroderick/PubSubJS" >PubSub-js<i class="fas fa-external-link-alt"></i></a></p>
+<p>比如A组件需要一些数据，这些数据是从兄弟B组件那里才能拿到</p>
+<p>这时A组件可以订阅消息，B组件来发布消息；当B组件发布消息时，A组件就可以收到，当然不是谁都能收到，它们中间还有一个”暗号“</p>
+<p>看这么一个小例子：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//App.jsx</span></span><br><span class="line"><span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">First</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Second</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
-<p>先看请求成功的返回结果：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled.6o42m7mo14c0.webp"
-                      alt="Untitled"
-                ></p>
-<p>这只是一部分，下面还有…</p>
-<p>再看错误的：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled-1.6fo7nrcdmak0.webp"
-                      alt="Untitled-1"
-                ></p>
-<p>下面还有好多！</p>
-<p>这种情况，我们根本不能一眼看到想要的正确&#x2F;错误的信息</p>
-<p>所以取回结果的时候要这么写：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">&#x27;axios&#x27;</span>)</span><br><span class="line"></span><br><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;http://localhost:8000/posts&#x27;</span>).<span class="title function_">then</span>(</span><br><span class="line">  <span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">data</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error.<span class="property">message</span>)</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//First.jsx    这个组件订阅</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> <span class="title class_">First</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    <span class="attr">book</span>: []</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//组件挂载后订阅</span></span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;    <span class="comment">//这个&#x27;hello&#x27; 就相当于&#x27;暗号&#x27;</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">token</span> = <span class="title class_">PubSub</span>.<span class="title function_">subscribe</span>(<span class="string">&quot;hello&quot;</span>, <span class="function">(<span class="params">msg,bookObj</span>) =&gt;</span> &#123; </span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">setState</span>(bookObj)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//组件卸载前取消订阅 </span></span><br><span class="line">  <span class="title function_">componentWillUnmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">PubSub</span>.<span class="title function_">unsubscribe</span>(<span class="variable language_">this</span>.<span class="property">token</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; id,name,type,author &#125; = <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">book</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;id&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;type&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;author&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>正确的消息数据保存在data里，错误的消息数据保存在message里</p>
-<p>看结果：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Second.jsx     这个组件发布</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> <span class="title class_">Second</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;</span><br><span class="line">  <span class="comment">//点击事件函数</span></span><br><span class="line">  handleClick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//发布订阅</span></span><br><span class="line">    <span class="title class_">PubSub</span>.<span class="title function_">publish</span>(<span class="string">&quot;hello&quot;</span>, &#123;  <span class="comment">//这个&#x27;hello&#x27; 就相当于&#x27;暗号&#x27;</span></span><br><span class="line">      <span class="attr">book</span>: &#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;活着&quot;</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;短篇小说&quot;</span>,</span><br><span class="line">        <span class="attr">author</span>: <span class="string">&quot;余华&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过<strong>消息订阅和发布</strong>成功的解决了组件间通信的问题</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled-2.5dto1ky7c9w0.webp"
-                      alt="Untitled-2"
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled-3.2923fpozopus.webp"
-                      alt="Untitled-3"
+                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/2022-03-26-01.47cbp5zti9a0.gif"
+                      alt="2022-03-26-01"
                 ></p>
 
         </div>
@@ -236,29 +224,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/%E6%B6%88%E6%81%AF%E8%AE%A2%E9%98%85%E4%B8%8E%E5%8F%91%E5%B8%83/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">消息订阅与发布</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/No-license-field/"
+                           href="/%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E7%9A%84%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">No license field</span>
+                                <span class="post-nav-title-item">网络请求的返回结果</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
