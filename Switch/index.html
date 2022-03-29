@@ -9,7 +9,7 @@
     
     <title>
         
-            React路由-NavLink的二次封装 |
+            Switch |
         
         XIAOBO&#39;s Blog
     </title>
@@ -140,7 +140,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">React路由-NavLink的二次封装</span>
+            <span class="title-hover-animation">Switch</span>
         </div>
 
         
@@ -157,8 +157,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-03-29 14:19:27</span>
-        <span class="mobile">2022-03-29 14:19</span>
+        <span class="pc">2022-03-29 21:33:43</span>
+        <span class="mobile">2022-03-29 21:33</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -190,42 +190,39 @@
         
 
         <div class="article-content markdown-body">
-            <p>由于NavLink组件在使用时，可能会有多次调用的情况，那样的话就会写很多重复性代码，所以需要把它二次封装</p>
-<p>重复太多：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">NavLink</span> activeClassName=<span class="string">&quot;test&quot;</span> className=<span class="string">&quot;nav&quot;</span> to=<span class="string">&quot;/home&quot;</span>&gt;</span><br><span class="line">  <span class="title class_">Home</span></span><br><span class="line">&lt;/<span class="title class_">NavLink</span>&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">NavLink</span> <span class="attr">activeClassName</span>=<span class="string">&quot;test&quot;</span> <span class="attr">className</span>=<span class="string">&quot;nav&quot;</span> <span class="attr">to</span>=<span class="string">&quot;/about&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  About</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">NavLink</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">NavLink</span> <span class="attr">activeClassName</span>=<span class="string">&quot;test&quot;</span> <span class="attr">className</span>=<span class="string">&quot;nav&quot;</span> <span class="attr">to</span>=<span class="string">&quot;/other&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  Other</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">NavLink</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<h1 id="二次封装"><a href="#二次封装" class="headerlink" title="二次封装"></a>二次封装</h1><p>创建组件MyNavLink，引入基础react组件和react-router-dom组件中的NavLink</p>
-<p>render里返回一个NavLink标签即可</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">NavLink</span> activeClassName=<span class="string">&quot;test&quot;</span> className=<span class="string">&quot;nav&quot;</span>  &#123;...<span class="variable language_">this</span>.<span class="property">props</span>&#125; /&gt;</span><br></pre></td></tr></table></figure>
-
-<p>调用二次封装后的MyNavLink组件</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">MyNavLink</span> to=<span class="string">&quot;/home&quot;</span>&gt;<span class="title class_">Home</span>&lt;/<span class="title class_">MyNavLink</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<p>NavLink怎么不是双标签了? 那个展开语法props是干嘛的？</p>
-<p>MyNavLink组件怎么是双标签？标签体中间写了值？组件还能这么用?</p>
-<ol>
-<li><p>首先，在NavLink中：activeClassName、className这些属性可以写死，但是to属性却不行</p>
-<p>所以to属性的值必须在调用时传递过来，当然还有渲染到页面上的链接的名字，也就是双标签之间的内容，都需要通过props；这就是为什么上面用到了展开语法拿到props中的值了；展开语法可以拿到对象中的所有值，所以不管传递了多少属性和值，接收时只需要一个展开语法就可以完美接收全部</p>
-</li>
-<li><p>props中怎么能接到链接的名字呢？调用时没有传递这个props啊？</p>
-<p>看下面的代码：</p>
-<p>我创建了Test组件，使用双标签的形式在App组件中调用，在标签体中写入了一段文本，并且传入了一个a参数</p>
-<p>在Test组件中，输出了props</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//App.jsx</span></span><br><span class="line">&lt;<span class="title class_">Test</span> a=&#123;<span class="string">&quot;我是通过props传递的a属性的值&quot;</span>&#125;&gt;我是<span class="title class_">Test</span>组件&lt;/<span class="title class_">Test</span>&gt;</span><br><span class="line"><span class="comment">//Test.jsx</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">props</span>)</span><br></pre></td></tr></table></figure>
-
-<p>请看输出了什么？</p>
+            <p>路由设置好后，当我们点击链接时，它会在我们已经注册的路由中去匹配和我们点击的一致的路由来展示在页面上</p>
+<p>是怎么匹配的呢？</p>
+<p>当已经有了Home和About两个路由组件时：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled.45g37w214w80.webp"
+                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/2022-03-29-01.4mwl2d9avma0.gif"
+                      alt="2022-03-29-01"
+                ></p>
+<p>我们再注册一个路由组件Test：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Route path=&quot;/about&quot; component=&#123;About&#125; /&gt;</span><br><span class="line">&lt;Route path=&quot;/home&quot; component=&#123;Home&#125; /&gt;</span><br><span class="line">&lt;Route path=&quot;/home&quot; component=&#123;Test&#125; /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，一个home对应了两个组件的展示，这样显然是不太合理的；页面上会怎么展示呢？</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled.1gty38bf60u8.webp"
                       alt="Untitled"
                 ></p>
-<p>输出了一个对象，里面包含了a属性，值是一段文本；children属性，就是我之前在双标签体内写的文本；原来双标签体内的文本也会传入props，属性名是默认的children！也就是说单标签中给children属性赋值的话，就可以使它有自己的标签体值</p>
-<p>这就解释了为什么NavLink使用了单标签，而MyNavLink使用的双标签</p>
-</li>
-</ol>
-<p>NavLink二次封装后，调用就变得简单明了了许多：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">MyNavLink</span> to=<span class="string">&quot;/about&quot;</span>&gt;<span class="title class_">About</span>&lt;/<span class="title class_">MyNavLink</span>&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">MyNavLink</span> <span class="attr">to</span>=<span class="string">&quot;/home&quot;</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">MyNavLink</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">MyNavLink</span> <span class="attr">to</span>=<span class="string">&quot;/...&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">MyNavLink</span>&gt;</span></span>  <span class="comment">//...换成对应的属性即可</span></span><br></pre></td></tr></table></figure>
+<p>它同时把两个组件都展示出来了</p>
+<p>路由匹配是从已注册的路由中从上到下一个个去匹配，如果一致，则展示出来，继续往下走，直到最后一个</p>
+<p>那么这样岂不是很浪费资源？已经匹配到我们需要的路由了，根本不需要要再继续了！</p>
+<p>这时就可以使用Switch来解决这个问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Switch&gt;</span><br><span class="line">    &lt;Route path=&quot;/about&quot; component=&#123;About&#125; /&gt;</span><br><span class="line">    &lt;Route path=&quot;/home&quot; component=&#123;Home&#125; /&gt;</span><br><span class="line">    &lt;Route path=&quot;/home&quot; component=&#123;Test&#125; /&gt;</span><br><span class="line">&lt;/Switch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>引入Switch后：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled-1.5rassulw2wg0.webp"
+                      alt="Untitled-1"
+                ></p>
+<p>可以看到只显示了匹配到的第一个&#x2F;home，下面的就不会在继续了！</p>
 
         </div>
 
@@ -236,29 +233,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/Switch/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Switch</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/%E6%B6%88%E6%81%AF%E8%AE%A2%E9%98%85%E4%B8%8E%E5%8F%91%E5%B8%83/"
+                           href="/React%E8%B7%AF%E7%94%B1-NavLink%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">消息订阅与发布</span>
+                                <span class="post-nav-title-item">React路由-NavLink的二次封装</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -369,7 +351,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">二次封装</span></a></li></ol>
+        
     </div>
 </div>
         </aside>
