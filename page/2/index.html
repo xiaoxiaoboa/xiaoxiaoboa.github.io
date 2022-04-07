@@ -9,8 +9,6 @@
     
     <title>
         
-            Switch |
-        
         XIAOBO&#39;s Blog
     </title>
     
@@ -62,7 +60,7 @@
                 <ul class="menu-list">
                     
                         <li class="menu-item">
-                            <a class=""
+                            <a class="active"
                                href="/"
                             >
                                 首页
@@ -107,7 +105,7 @@
         <ul class="drawer-menu-list">
             
                 <li class="drawer-menu-item flex-center">
-                    <a class=""
+                    <a class="active"
                        href="/">首页</a>
                 </li>
             
@@ -136,138 +134,71 @@
             <div class="main-content">
 
                 
-                    <div class="fade-in-down-animation">
-    <div class="article-content-container">
-
-        <div class="article-title">
-            <span class="title-hover-animation">Switch</span>
-        </div>
-
+                    <div class="home-content-container fade-in-down-animation">
+    <ul class="home-article-list">
         
-            <div class="article-header">
-                <div class="avatar">
-                    <img src="/images/avatar.png">
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E7%9A%84%E6%9F%AF%E9%87%8C%E5%8C%96/">
+                        高阶函数_函数的柯里化
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        高阶函数_函数的柯里化
+💡 高阶函数：如果一个函数符合下列两个规范中的任何一个，就是高阶函数
+                  1. 若A函数，接收的参数是一个函数，那么A就是高阶函数
+                  2. 若A函数，调用后的...
+                    
                 </div>
-                <div class="info">
-                    <div class="author">
-                        <span class="name">XIAOBO</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-03-29 21:33:43</span>
-        <span class="mobile">2022-03-29 21:33</span>
-    </span>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Mar 12 2022 10:24:58 GMT+0800">2022-03-12</span></span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
+                        </li>
+                    
+                    
+                        <li>
+                            &gt; 
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/React/">React</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+    </div>
+
+    <a href="/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E7%9A%84%E6%9F%AF%E9%87%8C%E5%8C%96/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+    </ul>
+
+    <div class="home-paginator">
+        <div class="paginator">
     
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/React/">React</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
+        <a class="prev btn"
+           href="/"
+        >上一页</a>
     
 
-    
-    
-    
     
 </div>
 
-                    </div>
-                </div>
-            </div>
-        
-
-        <div class="article-content markdown-body">
-            <p>路由设置好后，当我们点击链接时，它会在我们已经注册的路由中去匹配和我们点击的一致的路由来展示在页面上</p>
-<p>是怎么匹配的呢？</p>
-<p>当已经有了Home和About两个路由组件时：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/2022-03-29-01.4mwl2d9avma0.gif"
-                      alt="2022-03-29-01"
-                ></p>
-<p>我们再注册一个路由组件Test：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Route</span> path=<span class="string">&quot;/about&quot;</span> component=&#123;<span class="title class_">About</span>&#125; /&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;/home&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Home&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;/home&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Test&#125;</span> /&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>可以看到，一个home对应了两个组件的展示，这样显然是不太合理的；页面上会怎么展示呢？</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled.1gty38bf60u8.webp"
-                      alt="Untitled"
-                ></p>
-<p>它同时把两个组件都展示出来了</p>
-<p>路由匹配是从已注册的路由中从上到下一个个去匹配，如果一致，则展示出来，继续往下走，直到最后一个</p>
-<p>那么这样岂不是很浪费资源？已经匹配到我们需要的路由了，根本不需要要再继续了！</p>
-<p>这时就可以使用Switch来解决这个问题</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Switch</span>&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;/about&quot;</span> <span class="attr">component</span>=<span class="string">&#123;About&#125;</span> /&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;/home&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Home&#125;</span> /&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;/home&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Test&#125;</span> /&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">Switch</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<p>引入Switch后：</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled-1.5rassulw2wg0.webp"
-                      alt="Untitled-1"
-                ></p>
-<p>可以看到只显示了匹配到的第一个&#x2F;home，下面的就不会在继续了！</p>
-
-        </div>
-
-        
-
-        
-
-        
-            <div class="article-nav">
-                
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/react-redux/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">react-redux</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/React%E8%B7%AF%E7%94%B1-NavLink%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">React路由-NavLink的二次封装</span>
-                                <span class="post-nav-item">下一篇</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-        
     </div>
 </div>
 
@@ -300,23 +231,6 @@
         </div>
     </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="tools-item page-aside-toggle">
-                <i class="fas fa-outdent"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-    </ul>
-</div>
-
-        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -363,14 +277,6 @@
     </div>
 
     
-        <aside class="page-aside">
-            <div class="post-toc-wrap">
-    <div class="post-toc">
-        
-    </div>
-</div>
-        </aside>
-    
 
     <div class="image-viewer-container">
     <img src="">
@@ -412,6 +318,7 @@
 
 
 
+
 <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
 
 
@@ -427,8 +334,6 @@
 
 
 <div class="post-scripts pjax">
-    
-        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
     
 </div>
 
