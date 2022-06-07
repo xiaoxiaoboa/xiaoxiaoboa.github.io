@@ -9,7 +9,7 @@
     
     <title>
         
-            Switch |
+            小案例--本地播放器 |
         
         XIAOBO&#39;s Blog
     </title>
@@ -140,7 +140,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Switch</span>
+            <span class="title-hover-animation">小案例--本地播放器</span>
         </div>
 
         
@@ -157,8 +157,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-03-29 21:33:43</span>
-        <span class="mobile">2022-03-29 21:33</span>
+        <span class="pc">2022-06-07 13:43:14</span>
+        <span class="mobile">2022-06-07 13:43</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -190,39 +190,72 @@
         
 
         <div class="article-content markdown-body">
-            <p>路由设置好后，当我们点击链接时，它会在我们已经注册的路由中去匹配和我们点击的一致的路由来展示在页面上</p>
-<p>是怎么匹配的呢？</p>
-<p>当已经有了Home和About两个路由组件时：</p>
+            <p> 小案例—本地音乐播放器</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/2022-03-29-01.4mwl2d9avma0.gif"
-                      alt="2022-03-29-01"
-                ></p>
-<p>我们再注册一个路由组件Test：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Route</span> path=<span class="string">&quot;/about&quot;</span> component=&#123;<span class="title class_">About</span>&#125; /&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;/home&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Home&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;/home&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Test&#125;</span> /&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>可以看到，一个home对应了两个组件的展示，这样显然是不太合理的；页面上会怎么展示呢？</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled.1gty38bf60u8.webp"
+                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled.6eaooc4yw600.webp"
                       alt="Untitled"
                 ></p>
-<p>它同时把两个组件都展示出来了</p>
-<p>路由匹配是从已注册的路由中从上到下一个个去匹配，如果一致，则展示出来，继续往下走，直到最后一个</p>
-<p>那么这样岂不是很浪费资源？已经匹配到我们需要的路由了，根本不需要要再继续了！</p>
-<p>这时就可以使用Switch来解决这个问题</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Switch</span>&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;/about&quot;</span> <span class="attr">component</span>=<span class="string">&#123;About&#125;</span> /&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;/home&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Home&#125;</span> /&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;/home&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Test&#125;</span> /&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">Switch</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<p>引入Switch后：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled-1.5rassulw2wg0.webp"
-                      alt="Untitled-1"
+                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled-1-tuya.gp506xapwwg.png"
+                      alt="Untitled-1-tuya"
                 ></p>
-<p>可以看到只显示了匹配到的第一个&#x2F;home，下面的就不会在继续了！</p>
+<p>界面很简单，由于自己不喜欢用现在市场上的音乐软件，比较喜欢下载歌曲后用本地播放器听歌，加上学了React后需要案例练手所以就产生了做个自己的本地播放器。程序和实现都是很基础的。</p>
+<p>用到的技术就是 Vite&#x2F;React  用的是原生API，无第三方包</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://localplayer.netlify.app/" >预览（部署在netlify）<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h1><ol>
+<li>导入本地文件夹</li>
+<li>显示歌曲列表，显示数量</li>
+<li>随机播放</li>
+<li>双击歌曲名播放</li>
+<li>自动下一首</li>
+<li>列表内搜索</li>
+</ol>
+<h1 id="学到的新知识"><a href="#学到的新知识" class="headerlink" title="学到的新知识"></a>学到的新知识</h1><h2 id="context"><a href="#context" class="headerlink" title="context"></a>context</h2><p>用于组件间共享state，很轻量</p>
+<p>说实话一直没搞懂这个，还需要仔细看这个点</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createContext, useState &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">SongsContext</span> = <span class="title function_">createContext</span>([])</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">SongsContextProvider</span> = (<span class="params">&#123; children &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [state, dispatch] = <span class="title function_">useState</span>([])</span><br><span class="line">  <span class="keyword">const</span> [playing, setPlaying] = <span class="title function_">useState</span>(<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">SongsContext.Provider</span> <span class="attr">value</span>=<span class="string">&#123;&#123;</span> <span class="attr">state</span>, <span class="attr">dispatch</span>, <span class="attr">playing</span>, <span class="attr">setPlaying</span> &#125;&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;children&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">SongsContext.Provider</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="回调-callback"><a href="#回调-callback" class="headerlink" title="回调 callback"></a>回调 callback</h2><p>用到的地方很多，但一直没有细想它的流程是是什么样的</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = F =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> num = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="title function_">F</span>(num)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fn</span>(<span class="function"><span class="params">num</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(num)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>fn是一个函数，接受一个参数F，函数体内是一个常量num值为1 。</p>
+<p>函数最后调用F并传入参数num</p>
+<p>调用fn时，传入一个参数（箭头函数），由于传入的参数在fn的最后被以函数形式调用并传了参数，所以箭头函数就可以接收到fn中执行F时传入的参数</p>
+<p>总结来说：调用fn时传入一个函数参数，在fn函数体执行完毕后，fn帮我们调用了传入的函数参数，而且还可以把fn函数体内的各种值作为参数传递给我们的函数</p>
+<p>解释的不是很清楚，意思是那个意思</p>
+<h1 id="input上传"><a href="#input上传" class="headerlink" title="input上传"></a>input上传</h1><p>本案例用到了input上传文件夹</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;input</span><br><span class="line">  id=<span class="string">&quot;file&quot;</span></span><br><span class="line">  type=<span class="string">&quot;file&quot;</span></span><br><span class="line">  hidden</span><br><span class="line">  webkitdirectory=<span class="string">&quot;true&quot;</span></span><br><span class="line">  multiple=&#123;<span class="literal">true</span>&#125;</span><br><span class="line">  onChange=&#123;handleImport&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>首先type属性的值要是file，是为上传文件</p>
+<ol>
+<li>hidden：隐藏控件</li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLInputElement/webkitdirectory" >webkitdirectory<i class="fas fa-external-link-alt"></i></a> ：上传的是文件夹类型</li>
+<li>multiple：允许多文件</li>
+</ol>
+<p>当使用了webkitdirectory时，需要上传文件夹，文件夹内所有文件的对象会被保存到files属性中</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/xiaoxiaoboa/blog-pic@main/Untitled-2-tuya.12u7dvjfnchs.png"
+                      alt="Untitled-2-tuya"
+                ></p>
+<h2 id="audio音频"><a href="#audio音频" class="headerlink" title="audio音频"></a>audio音频</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio</span><br><span class="line">	src=&#123;playing ? <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(playing) : <span class="string">&quot;&quot;</span>&#125;</span><br><span class="line">	onLoadedMetadata=&#123;handleLoad&#125;</span><br><span class="line">	controls</span><br><span class="line">	onEnded=&#123;handleShuffle&#125;</span><br><span class="line">	autoPlay=&#123;<span class="literal">true</span>&#125;</span><br><span class="line">	onPlay=&#123;handlePlayRotate&#125;</span><br><span class="line">	onPause=&#123;handlePauseRotate&#125;&gt;</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><a class="link"   target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onloadedmetadata" >onLoadedMetadata<i class="fas fa-external-link-alt"></i></a> ： 元数据加载完成后的事件</li>
+<li>controls：控制面板</li>
+<li>onEnded：播放结束后的事件</li>
+<li>autoPlay：自动播放</li>
+<li>onPlay：播放开始时的事件</li>
+<li>onPause：播放暂停时的事件</li>
+</ol>
+<h2 id="URL-createObjectURL"><a href="#URL-createObjectURL" class="headerlink" title="URL.createObjectURL"></a>URL.createObjectURL</h2><p>创建一个DOMString对象，表示 File&#x2F;Blob对象</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio</span><br><span class="line">	src=&#123;playing ? <span class="variable constant_">URL</span>.<span class="title function_">createObjectURL</span>(playing) : <span class="string">&quot;&quot;</span>&#125;</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
+
+<p>根据MDN文档创建出来的对象使用完毕后需要用<strong>URL.revokeObjectURL</strong>来释放资源</p>
 
         </div>
 
@@ -233,29 +266,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/react-redux/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">react-redux</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/React%E8%B7%AF%E7%94%B1-NavLink%E7%9A%84%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/"
+                           href="/%E7%BB%99%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99%E5%8A%A0%E4%B8%8A%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">React路由-NavLink的二次封装</span>
+                                <span class="post-nav-title-item">给你的网站加上暗黑模式</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -366,7 +384,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">1.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E5%88%B0%E7%9A%84%E6%96%B0%E7%9F%A5%E8%AF%86"><span class="nav-number">2.</span> <span class="nav-text">学到的新知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#context"><span class="nav-number">2.1.</span> <span class="nav-text">context</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E8%B0%83-callback"><span class="nav-number">2.2.</span> <span class="nav-text">回调 callback</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#input%E4%B8%8A%E4%BC%A0"><span class="nav-number">3.</span> <span class="nav-text">input上传</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#audio%E9%9F%B3%E9%A2%91"><span class="nav-number">3.1.</span> <span class="nav-text">audio音频</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-createObjectURL"><span class="nav-number">3.2.</span> <span class="nav-text">URL.createObjectURL</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
