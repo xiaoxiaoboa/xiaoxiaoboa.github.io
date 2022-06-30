@@ -190,7 +190,7 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="遇到问题-gt-useState"><a href="#遇到问题-gt-useState" class="headerlink" title="遇到问题 &gt; useState"></a>遇到问题 &gt; useState</h1><p>遇到问题的代码：</p>
+            <p>遇到问题的代码：</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">handleInput</span> = e =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;target, keyCode&#125; = e</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (keyCode !== <span class="number">13</span> || target.<span class="property">value</span>.<span class="title function_">trim</span>() === <span class="string">&quot;&quot;</span>) <span class="keyword">return</span></span><br><span class="line">	<span class="comment">//从第二次输入开始,存储的状态是空的</span></span><br><span class="line">  <span class="title function_">setItem</span>(<span class="function"><span class="params">prev</span> =&gt;</span> [...prev, &#123;<span class="attr">id</span>: <span class="title function_">nanoid</span>(), target.<span class="property">value</span>&#125;]) </span><br><span class="line">  <span class="comment">// setItem([...]) //没有使用回调的方式，更新状态正常</span></span><br><span class="line"></span><br><span class="line">  target.<span class="property">value</span> = <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;input</span><br><span class="line">  type=<span class="string">&quot;text&quot;</span></span><br><span class="line">  className=<span class="string">&quot;input&quot;</span></span><br><span class="line">  placeholder=<span class="string">&quot;输入主题&quot;</span></span><br><span class="line">  onKeyUp=&#123;handleInput&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
 
 <p>在input绑定了事件，获取输出的值，存储到state中</p>
@@ -334,7 +334,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98-gt-useState"><span class="nav-number">1.</span> <span class="nav-text">遇到问题 &gt; useState</span></a></li></ol>
+        
     </div>
 </div>
         </aside>
